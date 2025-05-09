@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>LoginPage.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #7a7e85;}
+.s4 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+LoginPage.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">pages</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">Utilites</span><span class="s2">.</span><span class="s1">BrowserActions</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">By</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">WebDriver</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">sun</span><span class="s2">.</span><span class="s1">jvm</span><span class="s2">.</span><span class="s1">hotspot</span><span class="s2">.</span><span class="s1">utilities</span><span class="s2">.</span><span class="s1">Assert</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">LoginPage </span><span class="s2">{</span>
+     <span class="s1">WebDriver driver</span><span class="s2">;</span>
+     <span class="s1">WebDriver driver </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">;</span>
+    <span class="s3">//Locators</span>
+    <span class="s1">By username_textbox </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">name</span><span class="s2">(</span><span class="s4">&quot;username&quot;</span><span class="s2">);</span>
+    <span class="s1">By passaword_textbox </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">name</span><span class="s2">(</span><span class="s4">&quot;password&quot;</span><span class="s2">);</span>
+    <span class="s1">By login_button </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">className</span><span class="s2">(</span><span class="s4">&quot;oxd-button oxd-button--medium oxd-button--main orangehrm-login-button&quot;</span><span class="s2">);</span>
+
+    <span class="s3">//Actions</span>
+    <span class="s0">public void </span><span class="s1">navigatetologinpage</span><span class="s2">()</span>
+    <span class="s2">{</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s4">&quot;https://opensource-demo.orangehrmlive.com/web/index.php/auth/login&quot;</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">enterusername</span><span class="s2">()</span>
+    <span class="s2">{</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">username_textbox</span><span class="s2">).</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s4">&quot;tomsmith&quot;</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">enterpassword</span><span class="s2">()</span>
+    <span class="s2">{</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">passaword_textbox</span><span class="s2">).</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s4">&quot;SuperSecretPassword!&quot;</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">clickloginbutton</span><span class="s2">()</span>
+    <span class="s2">{</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">login_button</span><span class="s2">).</span><span class="s1">click</span><span class="s2">();</span>
+    <span class="s2">}</span>
+
+    <span class="s3">//Assertaions</span>
+    <span class="s0">public void </span><span class="s1">validateSuccessfullogin</span><span class="s2">() {</span>
+        <span class="s1">String alertText </span><span class="s2">= </span><span class="s1">BrowserActions</span><span class="s2">.</span><span class="s1">getAlertText</span><span class="s2">(</span><span class="s1">driver</span><span class="s2">);</span>
+        <span class="s1">Assert</span><span class="s2">.</span><span class="s1">assertEquals</span><span class="s2">(</span><span class="s1">alertText</span><span class="s2">, </span><span class="s4">&quot;Sign in successful.&quot;</span><span class="s2">);</span>
+        <span class="s1">BrowserActions</span><span class="s2">.</span><span class="s1">acceptAlerts</span><span class="s2">(</span><span class="s1">driver</span><span class="s2">);</span>
+
+    <span class="s2">}</span>
+
+<span class="s2">}</span>
+</pre>
+</body>
+</html>
