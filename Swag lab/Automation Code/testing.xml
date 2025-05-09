@@ -1,0 +1,37 @@
+<suite name="SauceDemoTestSuite">
+
+    <listeners>
+        <listener class-name="Listeners.TestListener" />
+    </listeners>
+
+    <parameter name="browser" value="chrome" />
+
+    <test name="LoginTests">
+        <classes>
+            <class name="Tests.LoginTests" />
+        </classes>
+    </test>
+
+    <test name="InventoryTests">
+        <classes>
+            <class name="Tests.InventoryTests" />
+        </classes>
+    </test>
+
+    <test name="CartTests">
+        <classes>
+            <class name="Tests.CartTests" />
+        </classes>
+    </test>
+
+    <test name="CheckoutTests">
+        <classes>
+            <class name="Tests.CheckoutTests" />
+        </classes>
+    </test>
+    <test name="SideBarTests">
+        <classes>
+            <class name="Tests.SideBarTests" />
+        </classes>
+    </test>
+</suite>
